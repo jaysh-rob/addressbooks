@@ -9,7 +9,7 @@ pipeline {
         agent any
             steps {
                 echo "Compile the code"
-                sh "mvn compile"
+                sh "mvn compile"  
             }
         }
          stage('UnitTest') { //test
