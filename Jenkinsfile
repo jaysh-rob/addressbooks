@@ -10,7 +10,7 @@ tools {
         stage('Git Checkout') {
             steps {
                 echo '==============================================Git Checkout========================================='
-                git branch: 'main', url: 'https://github.com/jaysh-rob/addressbooks.git'
+                git branch: 'prod', url: 'https://github.com/jaysh-rob/addressbooks.git'
             }
         }
         
