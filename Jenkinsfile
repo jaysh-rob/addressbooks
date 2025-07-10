@@ -1,29 +1,37 @@
 pipeline {
-   agent none
-   tools{
-//     jdk "myjava"
-        maven "mymaven"
-   }
-    stages {  
-        stage('Compile') { //prod
-        agent any    
+    agent any
+
+tools {
+  maven 'maven3'
+  jdk 'jdk17'
+}
+
+    stages {
+        stage('Git Checkout') {
             steps {
-                echo "Compile the code"
-                sh "mvn compile"  
+                echo '==============================================Git Checkout========================================='
+                git branch: 'main', url: 'https://github.com/jaysh-rob/addressbooks.git'
             }
         }
-         stage('UnitTest') { //test
-         agent any
+        
+        stage('Compile') {
             steps {
-                echo "Test the code"
-                sh "mvn test"
+                echo '==============================================Compile========================================='
+                sh 'mvn compile'
             }
         }
-         stage('Package') {//dev
-        agent {label 'linux_slave'}
+        
+        stage('Test') {
             steps {
-                echo "Package the code"
-                sh "mvn package"
+                echo '==============================================Test========================================='
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                echo '==============================================Package========================================='
+                sh 'mvn package'
             }
         }
     }
