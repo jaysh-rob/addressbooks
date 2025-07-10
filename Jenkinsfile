@@ -4,7 +4,7 @@ pipeline {
 //     jdk "myjava"
         maven "mymaven"
    }
-    stages {
+    stages {  
         stage('Compile') { //prod
         agent any
             steps {
