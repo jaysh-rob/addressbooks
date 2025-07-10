@@ -6,7 +6,7 @@ pipeline {
    }
     stages {  
         stage('Compile') { //prod
-        agent any
+        agent any    
             steps {
                 echo "Compile the code"
                 sh "mvn compile"  
